@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript"> 
+          
+            // Function to check Whether both passwords is same or not.
+              
+            function checkPassword(form) { 
+                password1 = form.password1.value; 
+                password2 = form.password2.value; 
+  
+                // If password not entered 
+                if (password1 == '') 
+                    alert ("Please enter Password"); 
+                      
+                // If confirm password not entered 
+                else if (password2 == '') 
+                    alert ("Please enter confirm password"); 
+                      
+                // If Not same return False.     
+                else if (password1 != password2) { 
+                    alert ("\nPassword did not match: Please try again...") 
+                    return false; 
+                } 
+  
+                // If same return True. 
+                else{ 
+                    alert("Password Match: Registration successful") 
+                    return true; 
+                } 
+            } 
+
+            
+type=['graduation','post-graduation'];
+              data=[['cse','ece','mech'],['automobile','robotics','datascience']];
+              
+    function fillDD(){
+
+
+              var Typedd=document.getElementById('type');
+              for(i=0;i<type.length;i++)
+   {
+     var ele=document.createElement('option');
+     ele.text=type[i];
+     Typedd.add(ele,i+1);
+    }
+  }
+
+  function fillData()
+{
+
+var Typedd =document.getElementById('type');
+var selectedIdx= Typedd.selectedIndex;
+
+var Datadd =document.getElementById('data');
+
+Datadd.innerText=null;
+
+for(i=0;i<data[selectedIdx-1].length;i++)
+{
+var ele=document.createElement('option');
+ele.text=data[selectedIdx-1][i];
+Datadd.add(ele,i+1);
+
+}
+
+}
+
+function dobValidate() {
+
+				var date= new Date();
+
+				var year=date.getFullYear();
+				var month=date.getMonth()+1;
+				var dd=date.getDate();
+
+				if(month<10)
+				{
+					month='0'+month;
+				}
+				if(dd<10)
+				{
+					dd=0+""+dd;
+				}
+
+				document.getElementById('dob').max=(year-18)+"-"+(month)+"-"+(dd);
+
+				}
+
+</script> 
+        
+
+
+<style> 
+#rcorners1 {
+  border-radius: 50px;
+  background-color: #92a8d1;
+  padding: 15px; 
+  width: 400px;
+  height: 750px;  
+}
+</style>
+
+</head>
+<body onload="fillDD()">
+
+<div  class="container" id="rcorners1" style="text-align: center;" >
+             
+  <img src="https://media2.giphy.com/media/LSKBkLwZK4bQoVdieW/200w.webp?cid=790b7611349f593732dc7996a693b7aa00672f22f6504f1d&rid=200w.webp"  class="rounded-circle" width="304" height="236"> 
+
+
+<br>
+<br>
+
+
+<form onSubmit = "return checkPassword(this)">
+<fieldset style="text-align: center;">
+  <legend >SIGN-UP</legend>
+  <input type="email" name="" placeholder="email">
+  <br><br>
+  <input type="password" name="password1" placeholder="password">
+  <br><br>
+  <input type="password" name="password2" placeholder="re-type password">
+  <br><br>
+  <input type="date" id="dob" onclick="dobValidate()">
+  <br><br>
+  <select id="type" onchange="fillData()">
+<option>highest qualification</option>
+</select>
+<br><br>
+
+
+<select id="data">
+<option>branch</option>
+</select>
+<br><br>
+  <input type="submit" name="">
+  
+  </fieldset>
+</form>
+</div>
+
+</body>
+</html>>
