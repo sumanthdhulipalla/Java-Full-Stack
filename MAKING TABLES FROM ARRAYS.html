@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript">
+	data =[ ['name','rno','college name','sem'] ,['raj','1','IIT','5'], ];
+	function filltable()
+	{
+	
+		
+			document.write("<table border='2px'>");
+
+		for(i=0;i<data.length;i++)
+		{
+			document.write("<tr>");
+			for(j=0;j<data[i].length;j++)
+			{
+				document.write("<td>"+data[i][j]+"</td>");
+
+			}
+			document.write("</tr>");
+
+		}
+
+
+			document.write("</table>");
+		
+	}
+
+
+</script>
+
+</head>
+
+
+<body onload="filltable()">
+
+</body>
+
+</html>
