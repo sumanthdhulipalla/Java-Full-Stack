@@ -1,0 +1,25 @@
+RDBMS
+
+
+cardinality - no.of columns
+degree row - no.of rows
+
+roll-1 name-virat college-IIT
+
+oracle - mssql - mysql
+	SQL
+
+SQL  pl-SQL
+
+power/admin users:
+SYstem-
+sysdba -> TRIGGER
+
+metadata - data about data
+
+Create new users
+
+2 authentication ->
+winauth : when we turn on machine
+sqlauth : when it ask for password
+

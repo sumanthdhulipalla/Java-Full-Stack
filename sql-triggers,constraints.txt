@@ -1,0 +1,163 @@
+select user from dual;
+
+create table studFrTest
+(
+rolNo int primary key,
+clgCode int,
+sname varchar(20),
+constraint fk foreign key(clgCode) references college(clgid)
+)
+
+create table emp
+(
+empName varchar(20),
+age int check(age between 18 and 50),
+addr varchar(50)
+)
+
+create table emp1
+(
+empName varchar(20),
+city varchar(20) check(city in ('Bang','Hyd','Mum' ) ),
+addr varchar(50)
+)
+
+triggers
+
+clg
+clgID clgName noOfstds
+1            IIT                0          
+2            IIM               2        
+
+stud
+rno clgid sname
+101     2      ram
+102     2      rama
+
+alter table college
+add noOfStuds int
+
+create table trgTestTab
+( col varchar(20))
+
+create trigger trgDemo
+after insert
+on trgTestTab
+begin
+dbms_output.put_line('hello');
+end;
+
+set serveroutput on
+
+update trgTestTab set col='new value' where col='a';
+
+
+
+update trgTestTab set col='new value' ,col2='col 2 is just a test of syntax'
+where col='a';
+
+
+create or replace trigger trgDemo
+after insert
+on trgTestTab
+for each row
+begin
+dbms_output.put_line('hello'||:new.col);
+end;
+
+insert into college values(1,'IIM',0);
+
+
+insert into college values(2,'IIT',0);
+
+create or replace trigger trgStudent
+after insert
+on student
+for each row
+begin
+update college set noofstuds=noofstuds+1 where clgid=:new.clgCode;
+end;
+
+
+insert into student values('101','1','ram')select user from dual;
+
+create table studFrTest
+(
+rolNo int primary key,
+clgCode int,
+sname varchar(20),
+constraint fk foreign key(clgCode) references college(clgid)
+)
+
+create table emp
+(
+empName varchar(20),
+age int check(age between 18 and 50),
+addr varchar(50)
+)
+
+create table emp1
+(
+empName varchar(20),
+city varchar(20) check(city in ('Bang','Hyd','Mum' ) ),
+addr varchar(50)
+)
+
+triggers
+
+clg
+clgID clgName noOfstds
+1            IIT                0          
+2            IIM               2        
+
+stud
+rno clgid sname
+101     2      ram
+102     2      rama
+
+alter table college
+add noOfStuds int
+
+create table trgTestTab
+( col varchar(20))
+
+create trigger trgDemo
+after insert
+on trgTestTab
+begin
+dbms_output.put_line('hello');
+end;
+
+set serveroutput on
+
+update trgTestTab set col='new value' where col='a';
+
+
+
+update trgTestTab set col='new value' ,col2='col 2 is just a test of syntax'
+where col='a';
+
+
+create or replace trigger trgDemo
+after insert
+on trgTestTab
+for each row
+begin
+dbms_output.put_line('hello'||:new.col);
+end;
+
+insert into college values(1,'IIM',0);
+
+
+insert into college values(2,'IIT',0);
+
+create or replace trigger trgStudent
+after insert
+on student
+for each row
+begin
+update college set noofstuds=noofstuds+1 where clgid=:new.clgCode;
+end;
+
+
+insert into student values('101','1','ram')

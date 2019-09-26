@@ -1,0 +1,11 @@
+conn sysdba
+
+conn system
+
+create user dxc identified by pass:  
+
+alter session set "_oracle_script_" 
+
+create dba to dxc;  (to grant all permisiions to dxc)
+
+create table test(abc int);

@@ -1,0 +1,63 @@
+create sequence seqMyNum
+start with 1
+increment by 1;
+
+
+//cycle - nocycle -cache max min
+
+select seqmynum.nextval from dual;
+
+select seqmynum.currtval from dual;
+
+
+create table demoSeq
+(
+slno int,
+name varchar(20)
+)
+
+
+create table demoSeq1
+(
+slno int,
+name varchar(20)
+)
+
+
+insert into demoseq values(seqmynum.nextval,'abc');
+
+
+insert into demoseq1 values(seqmynum.nextval,'abc');
+
+update demoseq1 set  slno=seqmynum.nextval;
+//seq num was 8
+
+
+ insert into demoseq1 values(9,'xyz');
+
+
+delete from demoseq1
+where slno=seqmynum.nextval;
+
+9 
+
+
+
+--sequence with decrement--
+
+CREATE TABLE SQTRAIL(
+SLNO INT,
+NAME VARCHAR(10));
+
+
+
+
+CREATE SEQUENCE SEQN
+START WITH 20
+MAXVALUE 20
+MINVALUE 1
+INCREMENT BY -1
+
+
+insert into SQTRAIL values(SEQN.nextval,'abc');
+

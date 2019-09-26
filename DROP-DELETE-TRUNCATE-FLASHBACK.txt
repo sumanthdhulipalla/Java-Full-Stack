@@ -1,0 +1,44 @@
+CREATE TABLE FLASH(
+  2  NUM INT);
+
+Table created.
+
+SQL> INSERT INTO FLASH VALUES(2);
+
+1 row created.
+
+
+
+SQL> DROP TABLE FLASH;
+
+Table dropped.
+
+SQL> FLASHBACK TABLE FLASH TO BEFORE DROP;
+
+Flashback complete.
+
+SQL> SELECT * FROM FLASH;
+
+       NUM
+----------
+         2
+
+SQL> SELECT * FROM STUDENTS;
+
+    ROLLNO NAME       BRANCH     NATIVE
+---------- ---------- ---------- ----------
+         1 sumanth    cse        andhra
+         2 tej        ece        andhra
+
+SQL> DELETE FROM STUDENTS WHERE NAME='tej';
+
+1 row deleted.
+
+SQL> TRUNCATE TABLE STUDENTS;
+
+
+
+ROLLBACK IS FOR GETTING THE VALUES BACK AFTER DELETING THE TABLE;
+
+
+
