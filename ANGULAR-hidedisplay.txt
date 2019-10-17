@@ -1,0 +1,38 @@
+app comp ts  ->
+
+import { Component } from '@angular/core';
+import { Author } from './author.model';
+@Component({
+  selector: 'app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  
+  x;
+
+elem;
+
+myFunction() {
+   this.x = document.getElementById("myDIV");
+   this.elem = document.getElementById("btn");
+  if ((this.x).style.display === "none")
+  {
+    this.elem.value="Hide";
+    (this.x).style.display = "block";
+  }
+  else
+  {
+    this.elem.value="Show";
+    (this.x).style.display = "none";
+  }
+}
+  
+}
+
+app comp html  ->
+
+<div id="myDIV">
+  asdad
+  </div>
+  <input type="button" value="Hide" (click) = myFunction() id="btn">

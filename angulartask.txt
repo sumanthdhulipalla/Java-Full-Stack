@@ -1,0 +1,129 @@
+app comp ts ->
+
+import { Component } from '@angular/core';
+import { Author } from './author.model';
+@Component({
+  selector: 'app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  
+  authors:any[]
+  author=new Author();
+
+constructor()
+{
+
+  this.authors=this.author.getAuthors();
+}
+
+  
+}
+
+app comp hrml ->
+
+
+
+<table>
+  <tr>
+  <td> AuthorId    </td>
+  <td> AuthorName    </td>
+  <td> AuthorGender    </td>
+  <td> Author_MaritalStatus</td>
+  </tr>
+  
+  <tr *ngFor="let author of authors">
+      <td> {{author.authorId}} </td>
+      <td> {{author.authorName|maritalStatus:author.authorGender:author.maritalStatus}} </td>
+      <td> {{author.authorGender}} </td>
+      <td> {{author.maritalStatus}} </td>
+  
+  </tr>
+  
+  
+  </table>
+
+
+gender pipe ts ->
+
+import { Pipe, PipeTransform } from '@angular/core';
+
+
+@Pipe({name:"maritalStatus"})
+export class MaritalPipe implements PipeTransform
+{
+    transform(value: string, gender:string,maritalStatus:String) {
+    
+        if(gender.toUpperCase()=="MALE")
+        {
+            return "MR "+value;
+        }
+        if(gender.toUpperCase()=="FEMALE" && maritalStatus.toUpperCase()=="M")
+        {
+            return "MRS "+value;
+        }
+        else
+        {
+            return "MISS "+value;
+        }
+
+    }
+
+    
+}
+
+
+author model ts ->
+
+export class Author
+{
+
+authors:any[];
+
+
+constructor()
+{
+
+this.authors=[
+{authorId:1,authorName:'raj',authorGender:'male',maritalStatus:'m'},
+{authorId:2,authorName:'rajeev',authorGender:'male',maritalStatus:'s'},
+{authorId:3,authorName:'rajeshwari',authorGender:'female',maritalStatus:'m'},
+{authorId:4,authorName:'rajni',authorGender:'female',maritalStatus:'s'}
+]
+
+}
+
+getAuthors()
+{
+    return this.authors;
+}
+
+}
+
+
+app module ts ->
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
+import { FooterComponent } from './footer/footer.component';
+import { MaritalPipe } from './gender.pipe';
+@NgModule({
+  declarations: [
+    AppComponent,
+    FooterComponent,
+    MaritalPipe
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
